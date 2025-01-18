@@ -45,7 +45,9 @@ function CartScreen() {
                                 <ListGroup.Item key={item.product}>
                                     <Row>
                                         <Col md={2}>
-                                            <Image src={item.image} alt={item.name} fluid rounded />
+                                            <Link to={`/product/${item.product}`}>
+                                                <Image src={item.image} alt={item.name} fluid rounded />
+                                            </Link>
                                         </Col>
                                         <Col md={3}>
                                             <Link to={`/product/${item.product}`}>{item.name}</Link>

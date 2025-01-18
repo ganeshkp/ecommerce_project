@@ -9,6 +9,11 @@ function Header() {
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
+    // Calculate total items in the cart
+    const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
     const dispatch = useDispatch()
 
@@ -30,7 +35,13 @@ function Header() {
                         <Nav className="ml-auto">
 
                             <LinkContainer to='/cart'>
-                                <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
+                                <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart
+                                            {totalItems > 0 && (
+                                                <span className="badge badge-pill bg-success ms-2">
+                                                    {totalItems}
+                                                </span>
+                                            )}
+                                </Nav.Link>
                             </LinkContainer>
 
                             {userInfo ? (
