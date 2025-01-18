@@ -46,7 +46,7 @@ function App() {
           </Routes>
         </Container>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
