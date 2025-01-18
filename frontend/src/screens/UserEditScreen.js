@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -9,8 +9,7 @@ import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 function UserEditScreen({ match, history }) {
-
-    const userId = match.params.id
+    const { id : userId } = useParams(); // Use useParams to get the user ID from the URL
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
