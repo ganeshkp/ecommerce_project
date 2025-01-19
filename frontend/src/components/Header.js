@@ -44,24 +44,8 @@ function Header() {
                                 </Nav.Link>
                             </LinkContainer>
 
-                            {userInfo ? (
-                                <NavDropdown title={userInfo.name} id='username'>
-                                    <LinkContainer to='/profile'>
-                                        <NavDropdown.Item>Profile</NavDropdown.Item>
-                                    </LinkContainer>
-
-                                    <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
-
-                                </NavDropdown>
-                            ) : (
-                                    <LinkContainer to='/login'>
-                                        <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
-                                    </LinkContainer>
-                                )}
-
-
                             {userInfo && userInfo.isAdmin && (
-                                <NavDropdown title='Admin' id='adminmenue'>
+                                <NavDropdown title='Admin' id='adminmenue' align="end">
                                     <LinkContainer to='/admin/userlist'>
                                         <NavDropdown.Item>Users</NavDropdown.Item>
                                     </LinkContainer>
@@ -76,6 +60,21 @@ function Header() {
 
                                 </NavDropdown>
                             )}
+
+                            {userInfo ? (
+                                <NavDropdown title={userInfo.name} id='username'>
+                                    <LinkContainer to='/profile'>
+                                        <NavDropdown.Item>Profile</NavDropdown.Item>
+                                    </LinkContainer>
+
+                                    <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+
+                                </NavDropdown>
+                            ) : (
+                                    <LinkContainer to='/login'>
+                                        <Nav.Link><i className="fas fa-user"></i>Login</Nav.Link>
+                                    </LinkContainer>
+                                )}
 
 
                         </Nav>
