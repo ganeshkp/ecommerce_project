@@ -11,7 +11,6 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 
 function ProductEditScreen() {
-    debugger;
     const { id : productId } = useParams(); // Use useParams to get the product ID from the URL
 
     const [name, setName] = useState('')

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { PayPalButton } from 'react-paypal-button-v2'
 import Message from '../components/Message'
@@ -8,9 +8,10 @@ import Loader from '../components/Loader'
 import { getOrderDetails, payOrder, deliverOrder } from '../actions/orderActions'
 import { ORDER_PAY_RESET, ORDER_DELIVER_RESET } from '../constants/orderConstants'
 
-function OrderScreen({ match, history }) {
+function OrderScreen() {
     const { id : orderId } = useParams(); // Use useParams to get the order ID from the URL
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     const [sdkReady, setSdkReady] = useState(false)
@@ -47,7 +48,7 @@ function OrderScreen({ match, history }) {
     useEffect(() => {
 
         if (!userInfo) {
-            history.push('/login')
+            navigate('/login')
         }
 
         if (!order || successPay || order._id !== Number(orderId) || successDeliver) {
