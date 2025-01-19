@@ -9,7 +9,7 @@ import Paginate from '../components/Paginate'
 import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
-function ProductListScreen({ history, match }) {
+function ProductListScreen() {
 
     const dispatch = useDispatch()
 
@@ -43,7 +43,7 @@ function ProductListScreen({ history, match }) {
             dispatch(listProducts(keyword))
         }
 
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, keyword])
+    }, [dispatch, userInfo, successDelete, successCreate, createdProduct, keyword])
 
 
     const deleteHandler = (id) => {
@@ -127,4 +127,4 @@ function ProductListScreen({ history, match }) {
     )
 }
 
-export default ProductListScreen
+export default ProductListScreen;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -10,7 +10,8 @@ import { listProductDetails, updateProduct } from '../actions/productActions'
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 
-function ProductEditScreen({ match, history }) {
+function ProductEditScreen() {
+    debugger;
     const { id : productId } = useParams(); // Use useParams to get the product ID from the URL
 
     const [name, setName] = useState('')
@@ -23,6 +24,7 @@ function ProductEditScreen({ match, history }) {
     const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const productDetails = useSelector(state => state.productDetails)
     const { error, loading, product } = productDetails
@@ -35,7 +37,7 @@ function ProductEditScreen({ match, history }) {
 
         if (successUpdate) {
             dispatch({ type: PRODUCT_UPDATE_RESET })
-            history.push('/admin/productlist')
+            navigate('/admin/productlist')
         } else {
             if (!product.name || product._id !== Number(productId)) {
                 dispatch(listProductDetails(productId))
@@ -53,7 +55,7 @@ function ProductEditScreen({ match, history }) {
 
 
 
-    }, [dispatch, product, productId, history, successUpdate])
+    }, [dispatch, product, productId, successUpdate])
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -147,14 +149,12 @@ function ProductEditScreen({ match, history }) {
                                 >
                                 </Form.Control>
 
-                                <Form.File
-                                    id='image-file'
-                                    label='Choose File'
-                                    custom
+                                <input
+                                    type="file"
+                                    className="form-control mt-2" // Add custom styles as needed
                                     onChange={uploadFileHandler}
-                                >
+                                />
 
-                                </Form.File>
                                 {uploading && <Loader />}
 
                             </Form.Group>
@@ -222,4 +222,4 @@ function ProductEditScreen({ match, history }) {
     )
 }
 
-export default ProductEditScreen
+export default ProductEditScreen;
