@@ -34,10 +34,11 @@ function OrderScreen() {
     }
 
 
+    //ASUYx5bpI9k1bqau9MX2vup1slGg2bRtamicy17hfCn0uCjpLojQxwMbUPar5AixvBSmhnt8wvQy7eNM
     const addPayPalScript = () => {
         const script = document.createElement('script')
         script.type = 'text/javascript'
-        script.src = 'https://www.paypal.com/sdk/js?client-id=AeDXja18CkwFUkL-HQPySbzZsiTrN52cG13mf9Yz7KiV2vNnGfTDP0wDEN9sGlhZHrbb_USawcJzVDgn'
+        script.src = 'https://www.paypal.com/sdk/js?client-id=ASUYx5bpI9k1bqau9MX2vup1slGg2bRtamicy17hfCn0uCjpLojQxwMbUPar5AixvBSmhnt8wvQy7eNM'
         script.async = true
         script.onload = () => {
             setSdkReady(true)

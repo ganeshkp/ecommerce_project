@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap'
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'  // Import Routes
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'  // Import Routes
 import Header from './components/Header'
 import Footer from './components/Footer'
 import HomeScreen from './screens/HomeScreen'
