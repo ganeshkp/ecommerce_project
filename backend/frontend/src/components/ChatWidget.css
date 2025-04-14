@@ -34,16 +34,39 @@
     font-size: 14px;
   }
   
-  .chat-message {
+  .chat-message-wrapper {
+    display: flex;
     margin-bottom: 8px;
   }
-  
-  .chat-message.user {
-    text-align: right;
+
+  .align-right {
+    justify-content: flex-end;
   }
   
+  .align-left {
+    justify-content: flex-start;
+  }
+
+  .chat-message {
+    max-width: 70%;
+    padding: 8px 12px;
+    border-radius: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  
+  /* User messages (right) */
+  .chat-message.user {
+    background-color: #dcf8c6; /* light green */
+    color: #000;
+    border-top-right-radius: 0;
+  }
+  
+  /* Bot messages (left) */
   .chat-message.bot {
-    text-align: left;
+    background-color: #f1f0f0; /* light gray */
+    color: #000;
+    border-top-left-radius: 0;
   }
   
   .chat-input-container {

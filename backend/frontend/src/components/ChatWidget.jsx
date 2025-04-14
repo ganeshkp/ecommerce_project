@@ -24,9 +24,20 @@ const ChatWidget = () => {
 
   const handleSend = () => {
     if (input.trim() && userInfo) {
-      dispatch(sendMessage(input, userInfo.access));
+      const userMessage = input;
+  
+      // Optimistically add user message
+      dispatch({
+        type: 'SEND_MESSAGE_SUCCESS',
+        payload: { userMessage, botMessage: null }, // botMessage will be updated later
+      });
+  
       setInput('');
       setIsTyping(true);
+  
+      dispatch(sendMessage(userMessage, userInfo.access)).then(() => {
+        setIsTyping(false);
+      });
     }
   };
 
@@ -41,8 +52,13 @@ const ChatWidget = () => {
           <div className="chat-messages">
             {messages.length > 0 ? (
               messages.map((msg, idx) => (
-                <div key={idx} className={`chat-message ${msg.sender}`}>
-                  <span>{msg.message}</span>
+                <div
+                  key={idx}
+                  className={`chat-message-wrapper ${msg.sender === 'user' ? 'align-right' : 'align-left'}`}
+                >
+                  <div className={`chat-message ${msg.sender}`}>
+                    <span>{msg.text}</span>
+                  </div>
                 </div>
               ))
             ) : (
@@ -51,10 +67,13 @@ const ChatWidget = () => {
               </div>
             )}
             {isTyping && (
-              <div className="chat-message bot">
-                <span>Bot is typing...</span>
-              </div>
-            )}
+                <div className="chat-message bot typing">
+                    <span>Bot is typing</span>
+                    <span className="dot-1">.</span>
+                    <span className="dot-2">.</span>
+                    <span className="dot-3">.</span>
+                </div>
+                )}
           </div>
 
           <div className="chat-input-container">

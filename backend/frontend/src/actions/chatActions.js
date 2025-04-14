@@ -79,7 +79,10 @@ export const sendMessage = (message, token) => async (dispatch) => {
   
       dispatch({
         type: FETCH_CHAT_HISTORY_SUCCESS,
-        payload: data,
+        payload: data.map((msg) => ({
+          sender: msg.sender,
+          text: msg.message,
+        })),
       });
     } catch (error) {
       dispatch({
