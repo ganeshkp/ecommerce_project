@@ -32,6 +32,8 @@ import {
     orderDeliverReducer,
 } from './reducers/orderReducers';
 
+import { chatReducer } from './reducers/chatReducer';
+
 // Combine all reducers into a single object
 const reducer = {
     productList: productListReducer,
@@ -55,6 +57,7 @@ const reducer = {
     orderListMy: orderListMyReducer,
     orderList: orderListReducer,
     orderDeliver: orderDeliverReducer,
+    chat: chatReducer,
 };
 
 // Load initial data from local storage
