@@ -30,8 +30,6 @@ const ChatWidget = () => {
     }
   };
 
-  debugger;
-
   return (
     <div className="chat-widget-container">
       {open ? (

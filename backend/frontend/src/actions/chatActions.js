@@ -77,7 +77,6 @@ export const sendMessage = (message, token) => async (dispatch) => {
   
       const data = await response.json();
   
-      debugger;
       dispatch({
         type: FETCH_CHAT_HISTORY_SUCCESS,
         payload: data,
