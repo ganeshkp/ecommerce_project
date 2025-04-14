@@ -9,7 +9,7 @@ from base.utils.chatbot.db_agent import run_db_query
 
 @csrf_exempt  # Disable CSRF validation for this API endpoint
 @api_view(["POST"])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def postgres_query(request):
     query = request.data.get("query")
     if not query:
